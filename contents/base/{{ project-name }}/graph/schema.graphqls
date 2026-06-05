@@ -1,0 +1,14 @@
+type Query {
+  health: String!
+  get{{ PrefixName }}(id: ID!): {{ PrefixName }}
+  list{{ PrefixName }}s: [{{ PrefixName }}!]!
+}
+
+type Mutation {
+  create{{ PrefixName }}(displayName: String!): {{ PrefixName }}!
+}
+
+type {{ PrefixName }} {
+  id: ID!
+  displayName: String!
+}
