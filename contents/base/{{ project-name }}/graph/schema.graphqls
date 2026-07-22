@@ -1,11 +1,15 @@
+# The p6m standard GraphQL surface: entity-named type, prefix-free queries,
+# create/update/delete mutations. Served at /graphql on the service port.
+
 type Query {
-  health: String!
-  get{{ PrefixName }}(id: ID!): {{ PrefixName }}
-  list{{ PrefixName }}s: [{{ PrefixName }}!]!
+  {{ prefix_name | camel_case }}(id: ID!): {{ PrefixName }}
+  {{ prefix_name | camel_case }}s: [{{ PrefixName }}!]!
 }
 
 type Mutation {
   create{{ PrefixName }}(displayName: String!): {{ PrefixName }}!
+  update{{ PrefixName }}(id: ID!, displayName: String!): {{ PrefixName }}
+  delete{{ PrefixName }}(id: ID!): Boolean!
 }
 
 type {{ PrefixName }} {
