@@ -6,6 +6,6 @@ import (
 )
 
 // toModel maps the repository entity to its GraphQL model.
-func toModel(e repository.{{ PrefixName }}) *model.{{ PrefixName }} {
-	return &model.{{ PrefixName }}{ID: e.ID, DisplayName: e.DisplayName}
+func toModel(e repository.{{ EntityName }}) *model.{{ EntityName }} {
+	return &model.{{ EntityName }}{ID: e.ID, DisplayName: e.DisplayName}
 }

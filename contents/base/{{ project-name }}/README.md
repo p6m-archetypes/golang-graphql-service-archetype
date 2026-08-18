@@ -6,9 +6,9 @@ Go GraphQL service using gqlgen.
 
 The p6m standard GraphQL surface, served at `/graphql` on the service port:
 
-- type `{{ PrefixName }}` (`{ id, displayName }`)
-- queries `{{ prefix_name | camel_case }}(id)` and `{{ prefix_name | camel_case }}s`
-- mutations `create{{ PrefixName }}`, `update{{ PrefixName }}`, `delete{{ PrefixName }}`
+- type `{{ EntityName }}` (`{ id, displayName }`)
+- queries `{{ entityName }}(id)` and `{{ entityName }}s`
+- mutations `create{{ EntityName }}`, `update{{ EntityName }}`, `delete{{ EntityName }}`
 
 Health (`/health/readiness`, `/health/liveness`) and Prometheus `/metrics` answer on the
 management port.

@@ -11,8 +11,8 @@ import (
 	"{{ module_path }}/internal/repository"
 )
 
-// Create{{ PrefixName }} is the resolver for the create{{ PrefixName }} field.
-func (r *mutationResolver) Create{{ PrefixName }}(ctx context.Context, displayName string) (*model.{{ PrefixName }}, error) {
+// Create{{ EntityName }} is the resolver for the create{{ EntityName }} field.
+func (r *mutationResolver) Create{{ EntityName }}(ctx context.Context, displayName string) (*model.{{ EntityName }}, error) {
 	e, err := r.Store.Create(ctx, displayName)
 	if err != nil {
 		return nil, err
@@ -20,8 +20,8 @@ func (r *mutationResolver) Create{{ PrefixName }}(ctx context.Context, displayNa
 	return toModel(e), nil
 }
 
-// Update{{ PrefixName }} is the resolver for the update{{ PrefixName }} field.
-func (r *mutationResolver) Update{{ PrefixName }}(ctx context.Context, id string, displayName string) (*model.{{ PrefixName }}, error) {
+// Update{{ EntityName }} is the resolver for the update{{ EntityName }} field.
+func (r *mutationResolver) Update{{ EntityName }}(ctx context.Context, id string, displayName string) (*model.{{ EntityName }}, error) {
 	e, err := r.Store.Update(ctx, id, displayName)
 	if errors.Is(err, repository.ErrNotFound) {
 		return nil, nil
@@ -32,8 +32,8 @@ func (r *mutationResolver) Update{{ PrefixName }}(ctx context.Context, id string
 	return toModel(e), nil
 }
 
-// Delete{{ PrefixName }} is the resolver for the delete{{ PrefixName }} field.
-func (r *mutationResolver) Delete{{ PrefixName }}(ctx context.Context, id string) (bool, error) {
+// Delete{{ EntityName }} is the resolver for the delete{{ EntityName }} field.
+func (r *mutationResolver) Delete{{ EntityName }}(ctx context.Context, id string) (bool, error) {
 	if err := r.Store.Delete(ctx, id); err != nil {
 		if errors.Is(err, repository.ErrNotFound) {
 			return false, nil
@@ -43,8 +43,8 @@ func (r *mutationResolver) Delete{{ PrefixName }}(ctx context.Context, id string
 	return true, nil
 }
 
-// {{ PrefixName }} is the resolver for the {{ prefix_name | camel_case }} field.
-func (r *queryResolver) {{ PrefixName }}(ctx context.Context, id string) (*model.{{ PrefixName }}, error) {
+// {{ EntityName }} is the resolver for the {{ entityName }} field.
+func (r *queryResolver) {{ EntityName }}(ctx context.Context, id string) (*model.{{ EntityName }}, error) {
 	e, err := r.Store.Get(ctx, id)
 	if errors.Is(err, repository.ErrNotFound) {
 		return nil, nil
@@ -55,13 +55,13 @@ func (r *queryResolver) {{ PrefixName }}(ctx context.Context, id string) (*model
 	return toModel(e), nil
 }
 
-// {{ PrefixName }}s is the resolver for the {{ prefix_name | camel_case }}s field.
-func (r *queryResolver) {{ PrefixName }}s(ctx context.Context) ([]*model.{{ PrefixName }}, error) {
+// {{ EntityName }}s is the resolver for the {{ entityName }}s field.
+func (r *queryResolver) {{ EntityName }}s(ctx context.Context) ([]*model.{{ EntityName }}, error) {
 	items, err := r.Store.List(ctx)
 	if err != nil {
 		return nil, err
 	}
-	out := []*model.{{ PrefixName }}{}
+	out := []*model.{{ EntityName }}{}
 	for _, e := range items {
 		out = append(out, toModel(e))
 	}

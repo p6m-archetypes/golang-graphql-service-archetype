@@ -3,7 +3,7 @@
 
 package model
 
-type {{ PrefixName }} struct {
+type {{ EntityName }} struct {
 	ID          string `json:"id"`
 	DisplayName string `json:"displayName"`
 }

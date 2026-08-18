@@ -2,17 +2,17 @@
 # create/update/delete mutations. Served at /graphql on the service port.
 
 type Query {
-  {{ prefix_name | camel_case }}(id: ID!): {{ PrefixName }}
-  {{ prefix_name | camel_case }}s: [{{ PrefixName }}!]!
+  {{ entityName }}(id: ID!): {{ EntityName }}
+  {{ entityName }}s: [{{ EntityName }}!]!
 }
 
 type Mutation {
-  create{{ PrefixName }}(displayName: String!): {{ PrefixName }}!
-  update{{ PrefixName }}(id: ID!, displayName: String!): {{ PrefixName }}
-  delete{{ PrefixName }}(id: ID!): Boolean!
+  create{{ EntityName }}(displayName: String!): {{ EntityName }}!
+  update{{ EntityName }}(id: ID!, displayName: String!): {{ EntityName }}
+  delete{{ EntityName }}(id: ID!): Boolean!
 }
 
-type {{ PrefixName }} {
+type {{ EntityName }} {
   id: ID!
   displayName: String!
 }
